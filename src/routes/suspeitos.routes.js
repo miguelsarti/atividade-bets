@@ -16,3 +16,12 @@ suspeitosRoutes.get("/:id", (req,res) => {
 suspeitosRoutes.post("/", (req, res) => {
     const { nome, profissao, envolvimentoApostas, nivelSuspeita } = req.body;
 })
+
+//Criação de um novo suspeito
+const novoSuspeito = {
+    id: Math.floor(Math.random() * 1000000),
+    nome,
+    profissao,
+    envolvimentoApostas,
+    nivelSuspeita,
+};
