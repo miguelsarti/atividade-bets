@@ -35,3 +35,11 @@ suspeitos.push(novoSuspeito);
 suspeitosRoutes.get("/", (req, res) => {
     return res.status(200).json(suspeitos);
 }); 
+
+// 3. Rota para buscar suspeito específico pelo ID
+suspeitosRoutes.get("/:id", (req,res) => {
+    const { id } = req.params;
+});
+
+// 3. Busca um suspeito pelo id no array de candidatos
+const suspeito = suspeitos.find((ladrao) => ladrao.id == id);
