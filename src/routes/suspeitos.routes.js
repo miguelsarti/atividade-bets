@@ -48,6 +48,13 @@ suspeitos.push(novoSuspeito);
     novoSuspeito,
 });
 
+// 1. Verificação dos campos nome e profissão
+if (!nome || !partido) {
+    return res.status(400).send({
+        message: "O nome ou a profissão não foi preenchido",
+    });
+}
+
 // 2. Rota para listar os suspeitos
 suspeitosRoutes.get("/", (req, res) => {
     return res.status(200).json(suspeitos);
