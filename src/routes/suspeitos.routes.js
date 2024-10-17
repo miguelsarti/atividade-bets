@@ -36,7 +36,7 @@ suspeitosRoutes.post("/", (req, res) => {
 
     // 1. Verificação dos campos nome e profissão
 
-if (!nome || !partido || !envolvimentoApostas || !nivelSuspeita) {
+if (!nome || !profissao || !envolvimentoApostas || !nivelSuspeita) {
     return res.status(400).send({
         message: "O nome, profissão, envolvimento de apostas ou o nivel de suspeita não foi preenchido",
     }); 
@@ -65,11 +65,6 @@ suspeitos.push(novoSuspeito);
 suspeitosRoutes.get("/", (req, res) => {
     return res.status(200).json(suspeitos);
 }); 
-
-// 2. Rota para listar os suspeitos
-return res.status(400).send({
-    message: "O nome, profissão, envolvimento de apostas ou o nivel de suspeita não foi preenchido",
-});
 
 
 // 3. Rota para buscar suspeito específico pelo ID
@@ -102,7 +97,7 @@ if (!suspeito) {
     return res.status(404).json({ message: `Suspeito com id ${id} não encontrado!` });
 }
 
-// 4. Validação dos campos nome e partido
+// 4. Validação dos campos nome e profissão
 if (!nome || !profissao) {
     return res.status(400).send({
     message: "O nome ou a profissão não foi preenchido!",
@@ -125,7 +120,7 @@ if (!nome || !profissao) {
 suspeitosRoutes.delete("/:id", (req, res) => {
     const { id } = req.params;
 
-// 5. Busca um suspeito pelo id no array de candidatos
+// 5. Busca um suspeito pelo id no array de suspeitos
     const suspeito = suspeitos.find((ladrao) => ladrao.id == id);
 
 // 5. Verifica se o suspeito foi encontrado
